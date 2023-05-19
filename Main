@@ -1,7 +1,7 @@
 public class Main{
 	
 	public static void main(String[] args) {
-		Banco b1 = new Banco("paula silva", 3000, 10000, 0);
+		Banco b1 = new Banco("paula silva", 1337, 10, 0);
 		Banco b2 = new Banco("salvio padilhincas", 3000, 10000, 0);
 		
 		//teste id funcional
