@@ -1,1 +1,83 @@
 
+public class Banco {
+
+
+	private String nome;
+	private double saldo;
+  private double poupanca;
+	private int contas;
+	
+	public Banco(String nome, int conta, double saldo, double poupanca) {
+			super();
+			this.nome = nome;
+			this.saldoContaCorrente = saldo;
+			tthis.id = contas();
+      his.poupanca = poupanca;
+			
+		}
+	
+	private static int contadorContas = 0;
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public double getSaldo() {
+		return saldoContaCorrente;
+	}
+	public void setSaldo(double saldo) {
+		this.saldoContaCorrente = saldo;
+	}
+	public double getPoupanca() {
+		return poupanca;
+	}
+	public void setPoupanca(double poupança) {
+		this.poupanca = poupança;
+	}
+	public int getContas() {
+		return contas;
+	}
+	public void setContas(int contas) {
+		this.contas = contas;
+	}
+	
+	 private int gerarContas() {
+		 	contadorContas++;
+	        return contadorContas; 
+	 }
+
+	
+	public double deposito(double valor){
+		if (valor < 0)
+			throw new ArithmeticException("Valor não pode ser negativo");
+		return valor;
+	}
+
+	
+	public double saque(double valor, String tipoConta){
+	    if (tipoConta.equals("poupança")) {
+	        throw new ArithmeticException("Não a como sacar da conta poupança");
+	    }
+	    if (valor > this.saldo){
+	        throw new ArithmeticException("Você não pode fazer esse tipo de saque");
+	    }
+	    return this.saldo -= valor;
+	}
+	
+	public double transferencia(Banco destino, double valor) {
+        if (valor < 0)
+            throw new ArithmeticException("Valor não pode ser negativo");
+
+        if (destino.getContas() == this.contas)
+            throw new RuntimeException("[ERROR] : não tem como transferir para essa conta");
+
+        this.saldo -= valor;
+        destino.saldo += valor;
+        
+        return valor;
+    }
+	 
+	
+}
