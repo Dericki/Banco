@@ -51,24 +51,24 @@ public class Banco {
 	
 	public double deposito(double valor){
 		if (valor < 0)
-			throw new ArithmeticException("Valor não pode ser negativo");
+			throw new RuntimeException("Valor não pode ser negativo");
 		return valor;
 	}
 
 	
 	public double saque(double valor, String tipoConta){
 	    if (tipoConta.equals("poupança")) {
-	        throw new ArithmeticException("Não a como sacar da conta poupança");
+	        throw new RuntimeException("Não a como sacar da conta poupança");
 	    }
 	    if (valor > this.saldo){
-	        throw new ArithmeticException("Você não pode fazer esse tipo de saque");
+	        throw new RuntimeException("Você não pode fazer esse tipo de saque");
 	    }
 	    return this.saldo -= valor;
 	}
 	
 	public double transferencia(Banco destino, double valor) {
         if (valor < 0)
-            throw new ArithmeticException("Valor não pode ser negativo");
+            throw new RuntimeException("Valor não pode ser negativo");
 
         if (destino.getContas() == this.contas)
             throw new RuntimeException("[ERROR] : não tem como transferir para essa conta");
